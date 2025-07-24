@@ -3,69 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Mentor | Contact form</title>
-    <link rel="stylesheet" href="style.css">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="'./assets/images/favicon-32x32.png" />
+
+    <title>Frontend  Mentor | Contact form</title>
+    <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-    <div class="contact-form">
-        <h1>Contact Us</h1>
-
-        <form id="contact-form">
-            <div class="form-item">
-                <label for="first-name">First Name<span class="required-input">*</label>
-<input type="text" name="first-name" id="first-name">
-<p class="form-alert">This field is required</p>
-            </div>
-            <div class="last-name">
-                <label for="last-name">Last Name<span class="required-input">*</span></label>
-                <input type="text" name="last-name" id="last-name">
-                <p class="form-alert">This field is required</p>
-            </div>
-            <div class="form-item">
-                <label for="email">Email Address<span class="required-input">*</span></label>
-                <input type="email" name="email" id="email">
-                <p class="form-alert">Please enter a valid email address</p>
-            </div>
-            <div class="form-item">
-                <label for="query-type">Query Type<span class="required-input">*</span></label>
-                
-                <div class="radio-inputs">
-                    <div class="radio-option">
-                        <input type="radio" id="general-enquiry" name="query-type " value="General Enquiry">
-                        <label for="general-enquiry">General Enquiry</label>
-                    </div>
-                <div class="radio option">
-                    <input type="radio" id="support-request" name="query-type" value="Support Request">
-                    <label for="support-request">Support Request</label>
-                </div>
-               </div>
-               <p class="form-alert">Please select a query type</p>
-            </div>
-            <div class="form-item">
-                <label for="Message">Message<span class="required-input">*</span></label>
-                <textarea name="message" id="message" rows="8"></textarea>
-                <p class="form-alert">This field is required</p>
-            </div>
-            <div class="form-item">
-                <div>
-                    <input type="checkbox" name="consent" id="consent">
-                    <label for="consent">I consent  to being contacted by the team<span class="required-input">*</span></span></label>
-                </div>
-                <p class="form-alert">To submit this form, please consent to being contacted</p>
-            </div>
-
-            <button type="submit" id="submit-btn"></button>
-        </form>
-</div>
-
-<div id="success-message" class="success-message">
-    <div class="message-header">
-        <img src="images/icon-success-check.svg">
-    Message Sent!
+    <div class="Contact Form">
+        <img src="./assets/images/icon-success-check.svg" alt="thumbs up" />
+        <span>Message Sent!</span>
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
     </div>
-    <p>Thanks for completing the form. We'll be in touch soon!</p>
-</div>
-    
-    <script src="script.js"></script>
+
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <form class="form">
+            <div class="name-inputs">
+                <div class="form-item">
+                    <label for="first-name">First Name<span class="name"></span></label>
+                    <input type="text" id="first-name" aria-required="true"/>
+                    <span class="error hidden">This field is required </span>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label for="last-name">Last Name<span class="name"></span></label>
+                <input type="text" id="last-name" aria-required="true"/>
+                <span class="error hidden ">This field is required</span>
+            </div>
+
+            <div class="form-item">
+                <label for="email">Email Address<span class="name"></span></span></label>
+                <input type="text" id="email" aria-required="true"/>
+                <span class="error hidden"> Please enter a valid email address</span>
+                <span class="error hidden">This field is required</span>
+            </div>
+
+            <div class="form-item radio">
+                <label for="query">Querry Type<span class="name"></span></label>
+                <div id="query">
+                    <div class="query-type">
+                        <input type="radio" id="option1" name="query-type" aria-required="true" />
+                        <label for="option1">General Enquiry</label>
+                    </div>
+                    <div class="query-type">
+                        <input type="radio" id="option2" name="query-type" aria-required="true" />
+                        <label for="option2">Support Request</label>
+                </div>
+                <span class="error hidden">Please select a query type</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message<span class="name">*</span></label>
+                    <textarea id="message" rows="4" aria-required="true"></textarea>
+                    <span class="error hidden "></span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <div>
+                        <input type="checkbox" id="consent" aria-required="true" />
+                        <label for="consent">I consent to being contacted by the team<span>*</span></label>
+                    </div>
+                    <span class="error hidden">To submit this form, please consent to being contacted</span>
+                </div>
+
+              
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </form>
+    </div>
+   
+
+
+
+    <script src="./script.js"></script>
 </body>
 </html>
