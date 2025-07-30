@@ -1,0 +1,214 @@
+@font-face{
+    font-family:"Karla";
+    src: url(./assets/fonts/Karla-VariableFont_wght.ttf)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background-color: hsl(148, 38%, 91%) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+}
+
+.form-container {
+    width: 650px;
+    padding: 30px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 15px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.name-inputs {
+    display: flex;
+    gap: 10px;
+    }
+
+    .name-inputs input {
+        font-size: 14px;
+    }
+
+    label{
+        font-size: 14px;
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]){
+        border: 1px solid hsl(186, 15%, 59%);
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 8px 0;
+        width: 100%;
+        cursor: pointer;
+    } input:not([type="checkbox"]):not([type="radio"]): hover, textarea:hover{
+        border: 1px solid hsl(169, 82%, 27%);
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]): focus, textarea:focus{
+        outline: 1px solid hsl(169, 82%, 27%)
+    }
+
+    textarea{
+        width: 100%;
+        font-size: 16px;
+        padding: 20px;
+        border-radius: 5px;
+        resize: none;
+        margin: 10px 0 ;
+        border: 1px solid hsl(186, 15%, 59%);
+        cursor: pointer;
+    } 
+  
+
+#query {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+
+}
+
+.query-type{
+    border: 1px solid hsl(186, 15%, 59%);
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+
+}
+
+ 
+
+input[type=radio] {
+    accent-color: hsl(169, 82%, 27%);
+}
+
+h1 {
+    font-size: 28px;
+}
+
+button {
+    font-weight: bold;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(169, 82%, 27%);
+    padding: 15px 0;
+    border-radius: 5px;
+    border: 1px solid hsl(187, 24%, 22%);
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: hsl(169, 82%, 15%);
+}
+
+.checkbox > div {
+    display: flex;
+    margin-bottom: 8px;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type=checkbox] {
+    accent-color: hsl(169, 82%, 27%);
+    width: 15px;
+}
+
+span.error {
+    font-size: 14px;
+    display: block;
+    color: hsl(0, 66%, 56%);
+}
+
+span.hidden {
+    display: none;
+    }
+
+    .radio-selected {
+     background-color: hsl(148, 38%, 91%);  
+     border: 1px solid hsl(169, 82%, 27%);
+}
+
+.star {
+    color: hsl(169, 82%, 27%);
+}
+
+.toast{
+  position: fixed;
+  top: 30px;
+  width: 40px;
+  background-color: hsl(187, 24%, 22%);
+  padding: 20px;
+  border-radius: 10px;
+  color: hsl(0, 0%, 100%); 
+  font-size: 14px;
+  transition: all 1s linear; 
+}
+
+.toast > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toast img {
+    width: 14px;
+}
+
+.toast span {
+    font-weight: bold;
+}
+
+.toast.hidden {
+    transform: translateY(-400px);
+}
+
+.contact-form-success {
+    background-color: hsl(148, 38%, 91%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 400px){
+    .form-container{
+        width: 300px;
+    }
+    .name-inputs{
+        flex-wrap: wrap;
+    }
+
+    #query {
+        flex-wrap: wrap;
+    }
+
+    .toast {
+        width: 300px;
+    }
+}

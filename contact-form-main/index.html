@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-    <div class="Contact Form">
+    <div class="contact-form-success hidden">
         <img src="./assets/images/icon-success-check.svg" alt="thumbs up" />
         <span>Message Sent!</span>
         <p>Thanks for completing the form. We'll be in touch soon!</p>
@@ -21,28 +21,28 @@
         <h1>Contact Us</h1>
         <form class="form">
             <div class="name-inputs">
-                <div class="form-item">
-                    <label for="first-name">First Name<span class="name"></span></label>
+                <div class="form-group">
+                    <label for="first-name">First Name<span class="star"></span></label>
                     <input type="text" id="first-name" aria-required="true"/>
                     <span class="error hidden">This field is required </span>
                 </div>
             </div>
 
-            <div class="form-item">
-                <label for="last-name">Last Name<span class="name"></span></label>
+            <div class="form-group">
+                <label for="last-name">Last Name<span class="star"></span></label>
                 <input type="text" id="last-name" aria-required="true"/>
                 <span class="error hidden ">This field is required</span>
             </div>
 
-            <div class="form-item">
-                <label for="email">Email Address<span class="name"></span></span></label>
+            <div class="form-group">
+                <label for="email">Email Address<span class="star"></span></span></label>
                 <input type="text" id="email" aria-required="true"/>
                 <span class="error hidden"> Please enter a valid email address</span>
                 <span class="error hidden">This field is required</span>
             </div>
 
-            <div class="form-item radio">
-                <label for="query">Querry Type<span class="name"></span></label>
+            <div class="form-group radio">
+                <label for="query">Querry Type<span class="star"></span></label>
                 <div id="query">
                     <div class="query-type">
                         <input type="radio" id="option1" name="query-type" aria-required="true" />
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Message<span class="name">*</span></label>
+                    <label for="message">Message<span class="star">*</span></label>
                     <textarea id="message" rows="4" aria-required="true"></textarea>
                     <span class="error hidden "></span>
                 </div>
@@ -68,23 +68,9 @@
                     </div>
                     <span class="error hidden">To submit this form, please consent to being contacted</span>
                 </div>
+                <button type="submit">Submit</button>
 
               
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
