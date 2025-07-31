@@ -35,13 +35,23 @@ body{
 
 .form-group {
     width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .name-inputs {
     display: flex;
-    gap: 10px;
+    gap: 16px;
+    width: 100%;
     }
 
+    .name-inputs .form-group{
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+
+    }
     .name-inputs input {
         font-size: 14px;
     }
@@ -50,7 +60,8 @@ body{
         font-size: 14px;
     }
 
-    input:not([type="checkbox"]):not([type="radio"]){
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea {
         border: 1px solid hsl(186, 15%, 59%);
         font-size: 16px;
         padding: 10px;
@@ -58,7 +69,10 @@ body{
         margin: 8px 0;
         width: 100%;
         cursor: pointer;
-    } input:not([type="checkbox"]):not([type="radio"]): hover, textarea:hover{
+    } 
+    
+    input:not([type="checkbox"]):not([type="radio"]): hover, textarea:hover
+    {
         border: 1px solid hsl(169, 82%, 27%);
     }
 
@@ -156,13 +170,17 @@ span.hidden {
 .toast{
   position: fixed;
   top: 30px;
-  width: 40px;
+  left: 50px;
+  transform: translateX(-50%);
   background-color: hsl(187, 24%, 22%);
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 10px;
   color: hsl(0, 0%, 100%); 
   font-size: 14px;
-  transition: all 1s linear; 
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease-in-out;
+  min-width: 280px; 
 }
 
 .toast > div {
@@ -181,27 +199,21 @@ span.hidden {
 }
 
 .toast.hidden {
-    transform: translateY(-400px);
+    transform: translateY(-50%, -200%);
+      opacity: 0;
+      pointer-events: none;
+
 }
 
-.contact-form-success {
-    background-color: hsl(148, 38%, 91%);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-.hidden {
-    display: none;
-}
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 500px){
     .form-container{
-        width: 300px;
+        width: 90%;
     }
     .name-inputs{
         flex-wrap: wrap;
+        flex-direction: column;
     }
 
     #query {
