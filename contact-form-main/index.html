@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="icon" type="image/png" sizes="32x32" href="'./assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
 
     <title>Frontend  Mentor | Contact form</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -22,27 +22,27 @@
         <form class="form">
             <div class="name-inputs">
                 <div class="form-group">
-                    <label for="first-name">First Name<span class="star">*</span></label>
-                    <input type="text" id="first-name" aria-required="true"/>
-                    <span class="error hidden">This field is required </span>
+                    <label for="firstName">First Name<span class="star">*</span></label>
+                    <input type="text" id="firstName" name= "firstName" required/>
+                    <span class="error hidden"></span> 
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="last-name">Last Name<span class="star">*</span></label>
-                <input type="text" id="last-name" aria-required="true"/>
-                <span class="error hidden ">This field is required</span>
+                <label for="lastName">Last Name<span class="star">*</span></label>
+                <input type="text" id="lastName"  name="lastName" required/>
+                <span class="error hidden "></span>
             </div>
 
             <div class="form-group">
-                <label for="email">Email Address<span class="star"></span></span></label>
+                <label for="email">Email Address<span class="star"></span></label>
                 <input type="text" id="email" aria-required="true"/>
                 <span class="error hidden"> Please enter a valid email address</span>
                 <span class="error hidden">This field is required</span>
             </div>
 
             <div class="form-group radio">
-                <label for="query">Querry Type<span class="star"></span></label>
+                <label for="query">Query Type<span class="star"></span></label>
                 <div id="query">
                     <div class="query-type">
                         <input type="radio" id="option1" name="query-type" aria-required="true" />

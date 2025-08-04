@@ -6,152 +6,124 @@ let formValid = true;
 
 formElement.setAttribute("novalidate", "");
 
-//functions 
-
-const changeRadioBg = () =>{
-    radioDivs.forEach(radioDiv => {
-        const radio = radioDiv.querySelector("input");
-        if(radio.checked) {
-            radioDiv.classList.add("radio-selected");
-        }else{
-            radioDiv.classList.remove("radio.selected");
-        }
-    });
+// ✅ Toggle selected background on radio
+const changeRadioBg = () => {
+  radioDivs.forEach(radioDiv => {
+    const radio = radioDiv.querySelector("input");
+    radioDiv.classList.toggle("radio-selected", radio.checked);
+  });
 };
 
-const displayError = (formGroup, error) => {
-    const errorMessage = formGroup.querySelector(error);
+// ✅ Display error
+const displayError = (formGroup, message) => {
+  const errorMessage = formGroup.querySelector(".error");
+  if (errorMessage) {
+    errorMessage.innerText = message;
     errorMessage.classList.remove("hidden");
+  }
 };
 
-const removeError = (formGroup) => {
-    const errorMessage = formGroup.querySelectorAll(".error");
-    errorMessage.forEach(error =>{
-        error.classList.add("hidden");
-    })
-    
+// ✅ Remove all errors
+const removeError = formGroup => {
+  const errorMessage = formGroup.querySelector(".error");
+  if (errorMessage) {
+    errorMessage.classList.add("hidden");
+    errorMessage.innerText = "";
+  }
 };
 
+// ✅ Validation logic
 const validateGroup = formGroup => {
-    const inputType = formGroup.querySelectorAll("input, textarea").type || "text";
+  const input = formGroup.querySelector("input, textarea");
+  const inputType = input?.type || input?.tagName.toLowerCase();
 
-    switch (inputType) {
-        case "radio";
-        let checked = false;
-        const radioInputs = formGroup.querySelectorAll("input");
+  switch (inputType) {
+    case "radio":
+      const radios = formGroup.querySelectorAll("input[type='radio']");
+      const checked = Array.from(radios).some(radio => radio.checked);
+      if (!checked) {
+        displayError(formGroup, "Please select an option.");
+        formValid = false;
+      }
+      break;
 
-        radioInputs.forEach(input =>{
-            if (input.checked) {
-                checked = true;
-            }
-        });
+    case "checkbox":
+      if (!input.checked) {
+        displayError(formGroup, "Please agree to proceed.");
+        formValid = false;
+      }
+      break;
 
-        if (checked){
-            displayError(formGroup, ".error");
-            formValid = false;
-        }
-        break;
-        case"checkbox":
-        const checkInput = formGroup.querySelector("input");
+    case "text":
+    case "textarea":
+      if (input.value.trim() === "") {
+        displayError(formGroup, "This field cannot be empty.");
+        formValid = false;
+      }
+      break;
 
-        if (!checkInput.checked) {
-            displayError(formGroup, ".error");
-            formValid = false;
-        }
-        break;
-        case "text":
-            const textInput = formGroup.querySelector("input");
-            if (textInput.value.trim() === ""){
-                displayError(formGroup, ".error");
-                formValid = false;
-            }
-            break;
-            case "textarea":
-                const textareaInput = formGroup.querySelector("input");
-
-                if (textareaInput.value.trim() === ""){
-                    displayError(formGroup, ".error");
-                    formValid = false;
-                }
-                break;
-
-                case "email":
-                    const emailInput = formGroup.querySelector("input");
-                    const emailPattern = /^[a-zA-Z0-9._%+-] +@[a-zA-Z0-9.*]+\.[a-zA-Z]{2,}&/;
-
-                    if (emailInput.value.trim() === ""){
-                        displayError(formGroup, ".empty");
-                        formValid = false;
-                    }else if (!emailPatttern.test(emailInput.value)){
-                        displayError(formGroup, ".valid");
-                        formValid = false;
-                    }
-                    break;
-                    default:
-                        break;
-
-
-}
+    case "email":
+      const value = input.value.trim();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (value === "") {
+        displayError(formGroup, "Email is required.");
+        formValid = false;
+      } else if (!emailPattern.test(value)) {
+        displayError(formGroup, "Enter a valid email address.");
+        formValid = false;
+      }
+      break;
+  }
 };
 
+// ✅ Show toast
 const displayToast = () => {
-    setTimeout(() => {
-        toast.classList.remove("hidden");
-    }, 10);
-    setTimeout(() => {
-        toast.classList.add("hidden");
-    }, 4000);
-}
+  setTimeout(() => toast.classList.remove("hidden"), 10);
+  setTimeout(() => toast.classList.add("hidden"), 4000);
+};
 
-//Event listeners
-
-document.addEventListener('DOMContentLoaded', () =>{
-    if (localStorage.getItem('showToast') === 'true') {
-        displayToast();
-
-        localStorage.removeItems('showToast');
-    }
+// ✅ Show toast on reload
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("showToast") === "true") {
+    displayToast();
+    localStorage.removeItem("showToast");
+  }
 });
 
+// ✅ Radio button click logic
 radioDivs.forEach(radioDiv => {
-    radioDiv.addEventListener("click", () =>{
-        const radioInput = radioDiv.querySelector("input");
-        radioInput.checked = true;
-        changeRadioBg();
-        removeError(radioDiv.parentElement.parentElement);
-
-    });
-})
-
-formElement.addEventListener("submit", event =>{
-    event.preventDefault();
-
-    formValid = true;
-
-    formGroups.forEach(formGroup => {
-        validateGroup(formGroup);
-    });
-
-    if (formValid) {
-        localStorage.setItem('showToast', 'true');
-        formElement.submit();
-    }
+  radioDiv.addEventListener("click", () => {
+    const radioInput = radioDiv.querySelector("input");
+    radioInput.checked = true;
+    changeRadioBg();
+    removeError(radioDiv.closest(".form-group"));
+  });
 });
 
+// ✅ Form submit
+formElement.addEventListener("submit", event => {
+  event.preventDefault();
+  formValid = true;
+
+  formGroups.forEach(formGroup => {
+    removeError(formGroup);
+    validateGroup(formGroup);
+  });
+
+  if (formValid) {
+    localStorage.setItem("showToast", "true");
+    formElement.submit();
+  }
+});
+
+// ✅ Input interaction (click and blur)
 formGroups.forEach(formGroup => {
-    const inputs = formGroup.querySelectorAll("input, textarea");
-    inputs.forEach(input => {
-        input.addEventListener("click", () => {
-            removeError(formGroup);
-        });
-
-        input.addEventListener("blur", () =>{
-            validateGroup(formGroup);
-        });
-        
-    });
+  const inputs = formGroup.querySelectorAll("input, textarea");
+  inputs.forEach(input => {
+    input.addEventListener("click", () => removeError(formGroup));
+    input.addEventListener("blur", () => validateGroup(formGroup));
+  });
 });
 
-toast.addEventListener("click", () => {
-    toast.classList.add("hidden");
-});
+// ✅ Toast click to dismiss
+toast.addEventListener("click", () => toast.classList.add("hidden"));

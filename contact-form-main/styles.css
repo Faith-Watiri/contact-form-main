@@ -71,12 +71,13 @@ body{
         cursor: pointer;
     } 
     
-    input:not([type="checkbox"]):not([type="radio"]): hover, textarea:hover
+    input:not([type="checkbox"]):not([type="radio"]):hover, 
+    textarea:hover
     {
         border: 1px solid hsl(169, 82%, 27%);
     }
 
-    input:not([type="checkbox"]):not([type="radio"]): focus, textarea:focus{
+    input:not([type="checkbox"]):not([type="radio"]):focus, textarea:focus{
         outline: 1px solid hsl(169, 82%, 27%)
     }
 
@@ -222,5 +223,24 @@ span.hidden {
 
     .toast {
         width: 300px;
+    }
+}
+
+
+
+.name-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.name-field {
+flex: 1;
+min-width: 200px;
+}
+
+@media (max-width: 500px){
+    .name-group {
+        flex-direction: column;
     }
 }
